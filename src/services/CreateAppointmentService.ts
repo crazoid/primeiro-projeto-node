@@ -23,7 +23,7 @@ class CreateAppointmentService {
     public execute({ date, provider }: Request): Appointment {
         const appointmentDate = startOfHour(date);
 
-        const findAppointmentInSameDate = this.appointmentsRepository.findByDate(date);
+        const findAppointmentInSameDate = this.appointmentsRepository.findByDate(appointmentDate);
 
         if (findAppointmentInSameDate) {
             throw Error('This appointment is already booked.');
